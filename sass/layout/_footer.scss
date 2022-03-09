@@ -1,0 +1,71 @@
+.footer {
+  background-color: $color-footer-dark;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+
+  @include respond(tablet-portrait) {
+    padding: 8rem 0;
+  }
+
+  &__logo-box {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__logo {
+    width: 15rem;
+    margin-bottom: 4rem;
+  }
+
+  &__navigation,
+  &__copyright {
+    padding: 3rem 0;
+    display: inline-block;
+    border-top: 2px solid #616161;
+  }
+
+  &__navigation {
+    @include respond(tablet-portrait) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__copyright {
+    width: 80%;
+    float: right;
+    @include respond(tablet-portrait) {
+      width: 100%;
+      text-align: center;
+      float: none;
+    }
+  }
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      color: #eee;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-primary;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+      transition: all 0.3s;
+      transform: scale(1.1) rotate(-5deg);
+    }
+  }
+}

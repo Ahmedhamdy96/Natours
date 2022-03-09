@@ -1,0 +1,63 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Media query manager
+
+/*
+  0      - 600 px  -> Mobile phones 
+  600px  - 900 px  -> Tablet portrait
+  900px  - 1200 px -> Tablet landscape 
+  1200px - 1800px  -> normal styles applied
+  1800px - ...     -> big screens 
+
+*/
+
+// @content directive will be replaced by the block of code that  will be written
+
+/*
+  $break-point choices :  
+  - phone 
+  - tablet-portrait
+  - tablet-landscape 
+  - big-desktop-screen
+
+  the [ em ] unit is the best one to use with media quiries 
+  1 em = 16 px  ,  
+  600px / 16 = 37.5 em  
+  900px / 16 = 56.25 em 
+  1200px / 16 = 75 em 
+  1800px / 16 = 112.5 em 
+
+  ORDER :  Base , Typography , grid + General layout  , page layout  , components 
+*/
+
+@mixin respond($break-point) {
+  @if $break-point == phone {
+    @media only screen and(max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  @if $break-point == tablet-portrait {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $break-point == tablet-landscape {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+
+  @if $break-point == big-desktop-screen {
+    @media only screen and(min-width: 112.5em) {
+      @content;
+    }
+  }
+}
